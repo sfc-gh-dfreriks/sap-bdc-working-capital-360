@@ -1,0 +1,24 @@
+spec:
+  containers:
+  - name: wc360
+    image: /sc360_app_provider/images/repo/working_capital_360:latest
+    env:
+      PORT: "8080"
+    resources:
+      requests:
+        memory: 1Gi
+        cpu: 500m
+      limits:
+        memory: 2Gi
+        cpu: 1000m
+    readinessProbe:
+      port: 8080
+      path: /healthcheck
+  endpoints:
+  - name: wc360
+    port: 8080
+    public: true
+serviceRoles:
+- name: working_capital_360_role
+  endpoints:
+  - wc360

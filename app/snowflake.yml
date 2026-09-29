@@ -1,0 +1,15 @@
+definition_version: 2
+entities:
+  pkg:
+    type: application package
+    identifier: WORKING_CAPITAL_360_PKG
+    artifacts:
+      - src: app/*
+        dest: ./
+    manifest: app/manifest.yml
+
+  app:
+    type: application
+    from:
+      target: pkg
+    identifier: WORKING_CAPITAL_360_APP
