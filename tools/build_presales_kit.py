@@ -164,6 +164,8 @@ def build_start_here(F):
         ["01_Management_Summary.docx", "Leaving something with the customer or briefing an exec. Customer-safe and explicit about enrichment.", "15 min"],
         ["00_Presales_Overview.pptx", "You need slides: the problem, SAP Working Capital Insights and Taulia, the architecture, the app, the ask.", "10 slides"],
         ["SAP_Working_Capital_360_Demo.pptx", "A screenshot-led walkthrough of every page to present or leave behind.", "slides"],
+        ["SAP_Working_Capital_360_Walkthrough.mp4", "A 4.5-minute narrated walkthrough. Watch before your first demo, or send ahead of a meeting.", "video"],
+        ["07_SAP_Working_Capital_360_Demo_Guide.pptx", "The 10-minute demo flow with presenter notes, do's and don'ts.", "18 slides"],
         ["05_Architecture_and_Install.docx", "An architect is in the room, or you are standing it up yourself.", "reference"],
         ["06_Setup_and_Access.docx", "You need access: the Native App, the listing, the role, the local build.", "5 min"],
     ], widths=[2.1, 3.8, 0.8])
