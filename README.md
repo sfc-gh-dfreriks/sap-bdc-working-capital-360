@@ -9,7 +9,11 @@ A reference implementation of an SAP **Working Capital Insights**–style applic
 
 ## Live
 - **Public demo (static, GitHub Pages):** https://sfc-gh-dfreriks.github.io/working-capital-360-public/
-- **Native App (US, SPCS):** https://eszht4-sfsenorthamerica-dfreriks-aws1-w2.snowflakecomputing.app (`WORKING_CAPITAL_360_APP`, internal listing `WORKING_CAPITAL_360_ORG`; access role `WORKING_CAPITAL_360_APP_USERS`). EMEA / APAC: not yet deployed.
+- **Native App (SPCS):** `WORKING_CAPITAL_360_APP`, internal listing `WORKING_CAPITAL_360_ORG` (region-scoped, one install per region). Users get the app role `APP_PUBLIC` through the access role `WORKING_CAPITAL_360_APP_USERS`, created on first use by the `provision-360-access` skill.
+  - North America: https://eszht4-sfsenorthamerica-dfreriks-aws1-w2.snowflakecomputing.app
+  - EMEA: https://ib3ite-sfseeurope-dfreriks-eu-demo.snowflakecomputing.app
+  - APAC: https://ibhbbd-sfseapac-sap-data-product-demo.snowflakecomputing.app
+- **Data share:** internal listing `SAP_BDC_WORKING_CAPITAL_360_DEMO` in all three regions (analytics tables, semantic view and Cortex Agent).
 - **Docs:** `docs/ARCHITECTURE.md`, `docs/INSTALL.md`, `docs/DEMO_GUIDE.md`, `docs/USE_CASES.md`, `docs/SAP_Working_Capital_360_Demo_Guide.pptx`
 
 ## Architecture (medallion)

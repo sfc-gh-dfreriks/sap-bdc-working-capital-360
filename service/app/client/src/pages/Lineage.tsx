@@ -60,8 +60,8 @@ export default function Lineage() {
           { key: 'rows', label: 'Rows', format: (v: any) => formatNumber(v) },
         ]} data={products} />
         <p className="mt-3 text-xs text-gray-500">
-          Curated L2 item tables: {(data.curated ?? []).map((c: any) => `${c.object} (${formatNumber(c.rows)} rows)`).join(' · ')}.
-          AR/AP amounts come from real journal lines; payment behaviour, programs, inventory, bank balances and partner names are demo enrichment.
+          Curated L2 tables: {(data.curated ?? []).map((c: any) => `${c.object} (${formatNumber(c.rows)} rows)`).join(' · ')}.
+          {data.note ? ` ${data.note}` : ''}
         </p>
       </ChartCard>
     </div>

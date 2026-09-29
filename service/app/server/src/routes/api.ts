@@ -290,6 +290,7 @@ router.get("/api/lineage", async (_req, res) => {
       curated: [
         { object: "ANALYTICS.DT_AR_ITEMS", rows: c.dt_ar }, { object: "ANALYTICS.DT_AP_ITEMS", rows: c.dt_ap },
       ],
+      note: "AR/AP invoices, amounts and dates come from real Entry View journal lines; payment terms and behaviour, early-pay programs, inventory, bank balances and partner names are demo enrichment. USD at fixed illustrative FX.",
       layers: [
         { name: "SAP Source Systems", tone: "sap", objects: ["SAP S/4HANA Finance (FI-AR/AP)", "SAP FSCM Collections & Disputes", "SAP Cash Management"] },
         { name: "L0 — Bronze (BDC Zero-Copy)", tone: "bronze", objects: ["SAP_BDC_DEMO_ENTRY_VIEW_JOURNAL_ENTRY", "SAP_BDC_DEMO_SUPPLIER_INVOICE", "SAP_BDC_DEMO_CASH_FLOW", "SAP_BDC_DEMO_BANK_ACCOUNT", "SAP_BDC_DEMO_DISPUTE_CASE", "+7 more"] },
