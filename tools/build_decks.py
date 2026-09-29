@@ -92,7 +92,7 @@ def o03_sap(prs, f):
                 "Working Capital Insights for visibility, Taulia for the levers")
     card(s, LEFT, TOP, 2.95, 3.3, "SAP BDC Working Capital Insights", [
         ("Intelligent app: Overview, Cash & Liquidity, AR, AP, Inventory.", 10.5, False, DK1, 6),
-        ("DSO, DPO, DIO and CCC; realized discounts, utilization, on-time payment.", 10.5, False, DK1, 0)], accent=SF_BLUE)
+        ("DSO, DPO, DIO and the cash conversion cycle; realized discounts, utilization, on-time payment.", 10.5, False, DK1, 0)], accent=SF_BLUE)
     card(s, LEFT + 3.07, TOP, 2.95, 3.3, "SAP Taulia levers", [
         ("Dynamic discounting and supply chain finance: extend DPO, capture discounts.", 10.5, False, DK1, 6),
         ("Flexible Funding and AR finance: reduce DSO.", 10.5, False, DK1, 6),
@@ -152,7 +152,7 @@ def o06_story(prs, f, shots):
          f"{d(P['DPO'])} to {d(L['DPO'])} days", accent=SF_BLUE)
     stat(s, x, TOP + 1.80, 3.0, 0.82, d(J["DIO"]), f"DIO, {J['COMPANY']}", "highest of the three", accent=TEAL)
     stat(s, x, TOP + 2.70, 3.0, 0.80, usd(f["cash_release_total_usd"]), "cash release", "by lever", accent=VIOLET)
-    note(s, "CCC = DSO + DIO - DPO. DSO weighted by revenue, DPO by purchases, DIO by COGS.")
+    note(s, "Cash conversion cycle (CCC) = DSO + DIO - DPO: days cash is tied up from paying suppliers to collecting from customers. DSO weighted by revenue, DPO by purchases, DIO by COGS.")
     return s
 
 
@@ -238,10 +238,10 @@ def demo(f, shots):
     prs = new_presentation()
     slides = [cover(prs, f, "App walkthrough")]
     slides.append(shot_slide(prs, shots, "overview", "Working Capital Overview", "DSO, DPO, DIO and the cash conversion cycle", [
-        ("shown", f"CCC {d(L['CCC'])} days in {f['latest_month']}, +{f['ccc_change_days']} vs {f['prior_month']}.", SF_BLUE, 1.05),
+        ("shown", f"Cash conversion cycle (CCC) {d(L['CCC'])} days in {f['latest_month']}, +{f['ccc_change_days']} vs {f['prior_month']}.", SF_BLUE, 1.05),
         ("say", f"DPO fell {d(P['DPO'] - L['DPO'])} days; DSO improved. {J['COMPANY']} has the highest DIO.", TEAL, 1.2),
         ("honesty", "NWC is negative: AP is about 3x AR in the demo tenant.", RED, 0.95)],
-        "All companies; multi-company ratios weighted by revenue, purchases and COGS."))
+        "CCC = DSO + DIO − DPO (days cash is tied up). Multi-company ratios weighted by revenue, purchases, COGS."))
     slides.append(shot_slide(prs, shots, "cash", "Cash & Liquidity", "Bank balances and the 13-week forecast", [
         ("balances", f"{usd(f['bank_latest']['BALANCE_USD'])} across {f['bank_latest']['ACCOUNTS']} accounts, {f['bank_latest']['HOUSE_BANKS']} house banks.", SF_BLUE, 1.15),
         ("forecast", f"13-week net cash {usd(f['cash_13w_net_usd'])}: receipts less AP, payroll, opex.", TEAL, 1.15),

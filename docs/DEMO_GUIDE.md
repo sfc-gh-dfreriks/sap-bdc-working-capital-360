@@ -4,6 +4,8 @@ A ~10-minute flow showing how Snowflake × SAP Business Data Cloud turns SAP rec
 payables and cash data into a live, AI-powered **Working Capital Insights** app. The full
 deck, with presenter notes, is [`SAP_Working_Capital_360_Demo_Guide.pptx`](SAP_Working_Capital_360_Demo_Guide.pptx).
 
+> **KPI glossary.** **DSO**, Days Sales Outstanding: how long customers take to pay. **DPO**, Days Payables Outstanding: how long we take to pay suppliers. **DIO**, Days Inventory Outstanding: how long stock sits before it is sold. **CCC**, Cash Conversion Cycle = DSO + DIO − DPO: the number of days cash is tied up between paying suppliers and collecting from customers. Lower is better.
+
 ## The story in one line
 The CFO asks: *"Why did our cash conversion cycle grow year over year?"* The app answers
 from governed SAP BDC data shared zero-copy. It then shows the SAP Taulia levers that would

@@ -4,6 +4,8 @@ There are two paths:
 - **A. Build the data platform** (L0→L1→L2→semantic→agent) for Snowflake Intelligence.
 - **B. Deploy the self-contained Native App** and publish it as an org listing across regions.
 
+> **KPI glossary.** **DSO**, Days Sales Outstanding: how long customers take to pay. **DPO**, Days Payables Outstanding: how long we take to pay suppliers. **DIO**, Days Inventory Outstanding: how long stock sits before it is sold. **CCC**, Cash Conversion Cycle = DSO + DIO − DPO: the number of days cash is tied up between paying suppliers and collecting from customers. Lower is better.
+
 B bundles its own data, so the consumer account does not need A.
 
 ## Prerequisites

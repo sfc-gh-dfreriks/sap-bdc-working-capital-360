@@ -50,19 +50,19 @@ export default function Overview() {
         </div>
       )}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <ChartCard title="Cash Conversion Cycle Trend" subtitle="DSO + DIO − DPO (days)" className="lg:col-span-2">
-          <ReactECharts option={{ tooltip: { trigger: 'axis' }, legend: { top: 0 },
-            grid: { left: 50, right: 20, bottom: 30, top: 36 },
+        <ChartCard title="Cash Conversion Cycle (CCC) Trend" subtitle="CCC = DSO + DIO − DPO: the days cash is tied up between paying suppliers and collecting from customers. Lower is better." className="lg:col-span-2">
+          <ReactECharts option={{ tooltip: { trigger: 'axis' }, legend: { top: 0, width: '95%' },
+            grid: { left: 50, right: 20, bottom: 30, top: 60 },
             xAxis: { type: 'category', data: trend.map((t: any) => t.month) },
             yAxis: { type: 'value', axisLabel: { formatter: '{value} d' } },
             series: [
-              { name: 'DSO', type: 'bar', stack: 'days', data: trend.map((t: any) => t.dso), itemStyle: { color: '#06b6d4' } },
-              { name: 'DIO', type: 'bar', stack: 'days', data: trend.map((t: any) => t.dio), itemStyle: { color: '#f59e0b' } },
-              { name: 'DPO', type: 'bar', stack: 'days', data: trend.map((t: any) => -t.dpo), itemStyle: { color: '#8b5cf6' } },
-              { name: 'CCC', type: 'line', smooth: true, symbolSize: 6, data: trend.map((t: any) => t.ccc), lineStyle: { color: '#11567f', width: 3 }, itemStyle: { color: '#11567f' } },
+              { name: 'DSO · Days Sales Outstanding', type: 'bar', stack: 'days', data: trend.map((t: any) => t.dso), itemStyle: { color: '#06b6d4' } },
+              { name: 'DIO · Days Inventory Outstanding', type: 'bar', stack: 'days', data: trend.map((t: any) => t.dio), itemStyle: { color: '#f59e0b' } },
+              { name: 'DPO · Days Payables Outstanding (subtracted)', type: 'bar', stack: 'days', data: trend.map((t: any) => -t.dpo), itemStyle: { color: '#8b5cf6' } },
+              { name: 'CCC · Cash Conversion Cycle', type: 'line', smooth: true, symbolSize: 6, data: trend.map((t: any) => t.ccc), lineStyle: { color: '#11567f', width: 3 }, itemStyle: { color: '#11567f' } },
             ] }} style={{ height: 340 }} />
         </ChartCard>
-        <ChartCard title="CCC Bridge" subtitle={`Latest month ${k.month}`}>
+        <ChartCard title="Cash Conversion Cycle (CCC) Bridge" subtitle={`Latest month ${k.month} · DSO + DIO − DPO = CCC`}>
           <ReactECharts option={{ tooltip: { trigger: 'axis', formatter: (p: any) => `${p[1].name}: ${p[1].value.toFixed(1)} d` },
             grid: { left: 45, right: 10, bottom: 30, top: 20 },
             xAxis: { type: 'category', data: waterfall.map((w) => w.name) },
@@ -73,11 +73,11 @@ export default function Overview() {
                 label: { show: true, position: 'top', formatter: (p: any) => p.value.toFixed(1) } },
             ] }} style={{ height: 340 }} />
         </ChartCard>
-        <ChartCard title="Company Comparison" subtitle={`Latest month ${k.month}`} className="lg:col-span-3">
+        <ChartCard title="Company Comparison" subtitle={`Latest month ${k.month} · CCC = Cash Conversion Cycle (DSO + DIO − DPO), in days`} className="lg:col-span-3">
           <DataTable columns={[
             { key: 'name', label: 'Company' }, { key: 'region', label: 'Region' },
             { key: 'dso', label: 'DSO', format: formatDays }, { key: 'dpo', label: 'DPO', format: formatDays },
-            { key: 'dio', label: 'DIO', format: formatDays }, { key: 'ccc', label: 'CCC', format: formatDays },
+            { key: 'dio', label: 'DIO', format: formatDays }, { key: 'ccc', label: 'CCC (Cash Conv. Cycle)', format: formatDays },
             { key: 'ar', label: 'AR', format: formatDollar }, { key: 'ap', label: 'AP', format: formatDollar },
             { key: 'inventory', label: 'Inventory', format: formatDollar }, { key: 'nwc', label: 'NWC', format: formatDollar },
             { key: 'arOverduePct', label: 'AR Overdue', format: (v: any) => formatPct(v == null ? null : v <= 1 ? v * 100 : v) },

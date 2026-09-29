@@ -2,6 +2,8 @@
 
 A reference implementation of an SAP **Working Capital Insights**–style application on Snowflake, built on SAP Business Data Cloud (BDC) data products shared zero-copy via **BDC Connect for Snowflake**. It follows the same pattern as the Finance, Spend, Sales, People and Supply Chain 360 apps.
 
+> **KPI glossary.** **DSO**, Days Sales Outstanding: how long customers take to pay. **DPO**, Days Payables Outstanding: how long we take to pay suppliers. **DIO**, Days Inventory Outstanding: how long stock sits before it is sold. **CCC**, Cash Conversion Cycle = DSO + DIO − DPO: the number of days cash is tied up between paying suppliers and collecting from customers. Lower is better.
+
 - **Pages:** Working Capital Overview (DSO / DPO / DIO / CCC), Cash & Liquidity (bank balances and a 13-week forecast), Accounts Receivable (aging, overdue, disputes, dunning), Accounts Payable (DPO, on-time rate, discounts captured and lost), Early Payment & Supply Chain Finance, Inventory, Working Capital Opportunities, BDC Sources & Lineage, and Ask the Agent.
 - **Early-payment levers:** the Early Payment & Supply Chain Finance page models SAP Taulia–style dynamic discounting and supply chain finance (SCF).
 

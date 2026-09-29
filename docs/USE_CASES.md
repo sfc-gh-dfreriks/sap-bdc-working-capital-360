@@ -2,6 +2,8 @@
 
 > Working capital intelligence over SAP BDC finance data products: DSO, DPO, DIO, cash conversion cycle, liquidity, and SAP Taulia early-payment levers.
 
+> **KPI glossary.** **DSO**, Days Sales Outstanding: how long customers take to pay. **DPO**, Days Payables Outstanding: how long we take to pay suppliers. **DIO**, Days Inventory Outstanding: how long stock sits before it is sold. **CCC**, Cash Conversion Cycle = DSO + DIO − DPO: the number of days cash is tied up between paying suppliers and collecting from customers. Lower is better.
+
 - **App:** working_capital_360_react (React, server 3010 / client 5185)
 - **Semantic view:** `SAP_WORKING_CAPITAL_360.SEMANTIC.SAP_WORKING_CAPITAL_360_ANALYTICS`
 - **Analytics tables:** DT_WC_MONTHLY_KPI, DT_AR_ITEMS, DT_AP_ITEMS, DT_INVENTORY_MONTHLY, DT_CASH_FORECAST, V_WC_OPPORTUNITIES

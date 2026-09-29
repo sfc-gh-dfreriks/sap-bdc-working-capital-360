@@ -198,7 +198,7 @@ def build_management_summary(F):
     h1(doc, "What Working Capital 360 does")
     for t in [
         "Reads SAP journal-entry, supplier-invoice, payment-terms, collections, cash-flow, bank and inventory data products through BDC Connect zero-copy shares — no extract, no second copy.",
-        "Builds one governed model of receivables, payables, inventory, bank balances and a 13-week cash forecast, with DSO, DPO, DIO and CCC by company and month.",
+        "Builds one governed model of receivables, payables, inventory, bank balances and a 13-week cash forecast, with DSO (Days Sales Outstanding), DPO (Days Payables Outstanding), DIO (Days Inventory Outstanding) and CCC (cash conversion cycle = DSO + DIO − DPO) by company and month.",
         "Models the SAP Taulia levers — dynamic discounting, supply chain finance — with a what-if, and ranks cash-release opportunities by lever.",
         "Joins non-SAP data where Snowflake is strongest: bank feeds, credit scores, market rates, alongside the SAP data.",
         "Lets finance ask questions in plain English through a Cortex Agent over the same semantic view the dashboards use, and ships as a Native App.",
@@ -207,7 +207,7 @@ def build_management_summary(F):
     h1(doc, "What the demo dataset shows")
     table(doc, ["Measure", "Value"], headline_rows(F), widths=[2.0, 4.7])
     h2(doc, "By company, " + F["latest_month"])
-    table(doc, ["Company", "DSO", "DPO", "DIO", "CCC", "AR overdue"],
+    table(doc, ["Company", "DSO", "DPO", "DIO", "CCC (cash conv. cycle)", "AR overdue"],
           [[c["COMPANY"], d(c["DSO"]), d(c["DPO"]), d(c["DIO"]), d(c["CCC"]), f"{c['AR_OVERDUE_PCT']}%"]
            for c in F["kpi_by_company_latest"]] +
           [["Total (weighted)", d(F["kpi_total_latest"]["DSO"]), d(F["kpi_total_latest"]["DPO"]),
@@ -252,7 +252,7 @@ def personas(F):
             ("Working Capital Overview", f"CCC {d(P['CCC'])} to {d(L['CCC'])} days (+{F['ccc_change_days']}). The driver is DPO, down {d(P['DPO'] - L['DPO'])} days; DSO actually improved."),
             ("Working Capital Overview", f"Split by company: {J['COMPANY']} has the highest DIO ({d(J['DIO'])}) and CCC ({d(J['CCC'])})."),
             ("WC Opportunities", f"{usd(F['cash_release_total_usd'])} of cash release; the largest lever is '{lever['LEVER']}' at {usd(lever['CASH_RELEASE_USD'])}."),
-            ("Ask the Agent", "Ask: 'Why did CCC increase in Japan Operations in 2025?'"),
+            ("Ask the Agent", "Ask: 'Why did the cash conversion cycle (CCC) increase in Japan Operations in 2025?'"),
         ], "The cycle is explainable in three numbers, by company, from SAP data — and the levers to reverse it are ranked."),
         ("Treasurer", "How much cash will we have in 13 weeks, and where is it?", "Cash & Liquidity", [
             ("Cash & Liquidity", f"Bank balances {usd(F['bank_latest']['BALANCE_USD'])} across {F['bank_latest']['ACCOUNTS']} accounts and {F['bank_latest']['HOUSE_BANKS']} house banks (demo enrichment)."),
@@ -389,7 +389,7 @@ def build_architecture(F):
     body(doc, "DIM_* tables and DT_BANK_BALANCE_WEEKLY are base tables holding demo enrichment; V_WC_OPPORTUNITIES is a view.")
     h1(doc, "How the KPIs are computed")
     for t in ["AR items are customer debit lines of Entry View Journal Entry; AP items are supplier credit lines.",
-              "DSO, DPO and DIO are trailing ratios per company and month in DT_WC_MONTHLY_KPI. Across companies they are weighted — DSO by revenue, DPO by purchases, DIO by COGS — and CCC = DSO + DIO − DPO.",
+              "DSO, DPO and DIO are trailing ratios per company and month in DT_WC_MONTHLY_KPI. Across companies they are weighted — DSO by revenue, DPO by purchases, DIO by COGS — and the cash conversion cycle CCC = DSO + DIO − DPO, i.e. the days cash is tied up between paying suppliers and collecting from customers.",
               "Discounts captured and lost, SCF funding and dynamic-discounting opportunity are computed per AP item from its (enriched) terms and early-pay program.",
               "The 13-week forecast (DT_CASH_FORECAST) projects receipts from open AR and payments from open AP plus payroll and opex.",
               f"All amounts are USD at {F['fx_note']} (DIM_COMPANY.RATE_TO_USD)."]:

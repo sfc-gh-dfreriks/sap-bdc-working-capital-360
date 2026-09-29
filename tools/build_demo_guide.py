@@ -76,13 +76,13 @@ CONTENT = {
         "Set up the problem. DSO, DPO and DIO sit in different SAP modules and the cash position sits "
         "at the banks. BDC shares the SAP side zero-copy; Snowflake joins it with non-SAP data and adds AI."),
     3: ({0: ["What Is Working Capital 360?"],
-         1: ["9 Working Capital Insights pages: CCC, cash, AR, AP, early payment, inventory and levers."],
+         1: ["9 Working Capital Insights pages: cash conversion cycle, cash, AR, AP, early payment, inventory, levers."],
          2: ["A Cortex Agent answers plain-English questions over a governed semantic view."],
          3: ["Runs on SPCS with data, semantic view and UI bundled; nothing leaves Snowflake."],
          5: ["A self-contained Snowflake Native App built on SAP BDC data"],
          9: ["Dashboards"], 10: ["Ask the Agent"], 11: ["Runs In Snowflake"]},
         "Tell them what they're about to see: 9 pages spelling out DSO (Days Sales Outstanding), DPO "
-        "(Days Payables Outstanding), DIO (Days Inventory Outstanding) and CCC, plus a live Cortex agent."),
+        "(Days Payables Outstanding), DIO (Days Inventory Outstanding) and CCC (cash conversion cycle = DSO + DIO − DPO), plus a live Cortex agent."),
     4: ({0: ["How It’s Built: BDC → Snowflake → App"],
          1: ["SAP BDC Connect shares 11 finance data products, including Entry View Journal Entry, "
              "Supplier Invoice and Cash Flow, with zero copy and no ETL."],
@@ -99,28 +99,28 @@ CONTENT = {
         "grew year over year.'"),
     6: ({0: ["The Demo Flow"],
          1: ["Open the app: no setup, the data is already inside",
-             f"Overview: CCC {P['CCC']} → {L['CCC']} days year over year",
+             f"Overview: cash cycle (CCC) {P['CCC']} → {L['CCC']} days",
              f"AP and Early Payment: DPO fell {P['DPO']} → {L['DPO']} days",
              "AR and Inventory: overdue, disputes, DIO vs target",
              f"WC Opportunities: USD {CASH_M:.1f}M cash release by lever",
-             "Ask the Agent why CCC rose in Japan Operations",
+             "Ask the Agent why Japan's cash cycle rose",
              "Recap: zero-ETL, governed, AI-ready"]},
         "Roadmap for the live demo; don't read it aloud. Focus most on AP and Early Payment & "
         "SCF: shorter DPO is the main reason CCC grew, and the Taulia levers fix it."),
     7: ({0: ["Demo Act 1: The Dashboards"],
-         1: [f"CCC (DSO + DIO − DPO) rose {F['ccc_change_days']} days to {L['CCC']}; "
+         1: [f"Cash conversion cycle (DSO + DIO − DPO) rose {F['ccc_change_days']} days to {L['CCC']}; "
              f"{HI['COMPANY']} is highest at {HI['CCC']} days."],
          2: [f"DPO fell from {P['DPO']} to {L['DPO']} days; USD {L['DISC_LOST_USD']/1e3:.1f}K of "
              "discounts were lost last month."],
          3: [f"Dynamic discounting (APR {F['dd_effective_apr']['APR_PCT']}%) and supply chain finance "
              "are the Taulia levers."],
          4: [f"USD {CASH_M:.1f}M cash release identified; SCF-extended DPO is the largest lever."],
-         6: ["Answer the CFO: why did CCC grow?"],
+         6: ["Answer the CFO: why did the cash conversion cycle grow?"],
          10: ["Overview"], 11: ["Payables"], 12: ["Early Payment"], 14: ["Opportunities"]},
         "Click through and narrate outcomes: 'CCC is up 4.7 days, and the driver is DPO: we pay "
         "suppliers earlier and still lose discounts.' Then show the SCF and dynamic discounting levers."),
     8: ({0: ["Demo Act 2: Ask the Agent"],
-         1: ["Ask in plain English: “Why did CCC increase in Japan Operations in 2025?”, “How much "
+         1: ["Ask in plain English: “Why did the cash conversion cycle increase in Japan in 2025?”, “How much "
              "discount did we lose by program?” or “Which customers have the most overdue AR?”"],
          2: ["SAP_WORKING_CAPITAL_ANALYST maps the question to the bundled semantic view, generates "
              "governed SQL and returns a chart with the exact query, so the answer is explainable."],
@@ -144,7 +144,7 @@ CONTENT = {
     11: ({0: ["Takeaways by the Numbers"],
           1: ["ETL pipelines to build: BDC Connect shares data zero-copy."],
           2: ["BDC finance data products composed into one app."],
-          3: ["Days of CCC growth explained, down to the driver."],
+          3: ["Days of cash conversion cycle growth, explained to the driver."],
           4: ["Cash release identified across the SAP Taulia levers."],
           5: ["0"], 6: ["11"], 7: [str(F["ccc_change_days"])], 8: [f"${CASH_M:.0f}M"],
           10: ["What this demo proves"]},

@@ -24,7 +24,7 @@ interface Message {
 }
 
 const SUGGESTED_QUESTIONS = [
-  'Why did CCC increase in Japan Operations in 2025?',
+  'Why did the cash conversion cycle (CCC) increase in Japan Operations in 2025?',
   'Which customers have the most overdue AR?',
   'How much discount did we lose by program?',
   'What is the 13-week net cash forecast by company?',

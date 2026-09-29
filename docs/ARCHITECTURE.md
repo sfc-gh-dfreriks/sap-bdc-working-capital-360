@@ -6,6 +6,8 @@ shares and turns it into a **Working Capital Insights** model covering DSO, DPO,
 the cash conversion cycle, liquidity, and SAP Taulia early-payment levers. There is no ETL,
 no copy, and the SAP business context is preserved.
 
+> **KPI glossary.** **DSO**, Days Sales Outstanding: how long customers take to pay. **DPO**, Days Payables Outstanding: how long we take to pay suppliers. **DIO**, Days Inventory Outstanding: how long stock sits before it is sold. **CCC**, Cash Conversion Cycle = DSO + DIO − DPO: the number of days cash is tied up between paying suppliers and collecting from customers. Lower is better.
+
 ```
  SAP S/4HANA (FI-AR / FI-AP / Cash / MM)     SAP Business Data Cloud
  (source of record)  ─────  Journal Entry · Supplier Invoice · Cash Flow  ─────►  Snowflake
