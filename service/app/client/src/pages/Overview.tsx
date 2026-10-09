@@ -6,7 +6,7 @@ import MetricCard, { DollarSign, Calendar, Gauge, Activity, Receipt, Building2, 
 import ChartCard from '@/components/ChartCard';
 import DataTable from '@/components/DataTable';
 import { NeedCompany, Loading, ErrorBox } from '@/components/PageState';
-import ReactECharts from 'echarts-for-react';
+import ReactECharts from '@/components/Chart';
 
 const days = (v: number) => `${v.toFixed(1)} d`;
 /** For DSO/DIO/CCC/AR/inventory lower is better; for DPO higher is better. */

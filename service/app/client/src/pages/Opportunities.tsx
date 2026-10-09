@@ -7,7 +7,7 @@ import ChartCard from '@/components/ChartCard';
 import DataTable from '@/components/DataTable';
 import DemoBadge from '@/components/DemoBadge';
 import { NeedCompany, Loading, ErrorBox } from '@/components/PageState';
-import ReactECharts from 'echarts-for-react';
+import ReactECharts from '@/components/Chart';
 
 const AREA_ACCENT: Record<string, string> = {
   AR: 'border-cyan-300/50 bg-gradient-to-br from-cyan-50 to-sky-50',

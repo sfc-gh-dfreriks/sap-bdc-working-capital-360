@@ -7,7 +7,7 @@ import ChartCard from '@/components/ChartCard';
 import DataTable from '@/components/DataTable';
 import DemoBadge from '@/components/DemoBadge';
 import { NeedCompany, Loading, ErrorBox } from '@/components/PageState';
-import ReactECharts from 'echarts-for-react';
+import ReactECharts from '@/components/Chart';
 
 const AGING_COLORS: Record<string, string> = { 'Not Due': '#10b981', '1-30': '#f59e0b', '31-60': '#f97316', '61-90': '#ef4444', '90+': '#991b1b' };
 

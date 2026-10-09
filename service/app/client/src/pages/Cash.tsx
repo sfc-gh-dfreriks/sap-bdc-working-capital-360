@@ -6,7 +6,7 @@ import MetricCard, { DollarSign, TrendingDown, Building2, Activity } from '@/com
 import ChartCard from '@/components/ChartCard';
 import DemoBadge from '@/components/DemoBadge';
 import { NeedCompany, Loading, ErrorBox } from '@/components/PageState';
-import ReactECharts from 'echarts-for-react';
+import ReactECharts from '@/components/Chart';
 
 const PALETTE = ['#06b6d4', '#8b5cf6', '#f59e0b', '#10b981', '#ef4444', '#3b82f6'];
 
