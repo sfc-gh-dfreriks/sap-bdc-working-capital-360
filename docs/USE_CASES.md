@@ -18,7 +18,7 @@
 | 5 | Inventory optimization | Supply chain / controller | Inventory |
 | 6 | Liquidity and 13-week cash | Treasurer | Cash & Liquidity |
 | 7 | Cash release plan | CFO / finance transformation | WC Opportunities |
-| 8 | Working capital copilot | Any finance user | Ask the Agent (Cortex Agent) |
+| 8 | Working capital copilot | Any finance user | Ask Cortex (page analysis) and Ask the Agent (Cortex Agent) |
 
 ## 1. Cash conversion cycle
 

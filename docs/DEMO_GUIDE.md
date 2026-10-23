@@ -29,11 +29,13 @@ release the cash.
 6. **Inventory.** Show DIO against target by category; Spare Parts & MRO is the slowest.
 7. **Cash & Liquidity.** Show USD 18.4M in bank balances and the 13-week forecast.
 8. **WC Opportunities.** Show cash release by lever and company.
-9. **Ask the Agent.** Ask `SAP_WORKING_CAPITAL_ANALYST` live:
+9. **Ask Cortex.** Click "Ask Cortex about Accounts Payable" (or open the Ask Cortex page) for a
+   written analysis of the page's live facts, then ask a follow-up of your own.
+10. **Ask the Agent.** Ask `SAP_WORKING_CAPITAL_ANALYST` live:
    - "Why did CCC increase in Japan Operations in 2025?"
    - "How much discount did we lose by program?"
    - "Which customers have the most overdue AR?"
-10. **BDC Sources & Lineage + recap.** Show the 11 BDC data products → 14 L1 views → L2 → app. Recap: zero-ETL, governed, AI-ready, one-click distribution.
+11. **BDC Sources & Lineage + recap.** Show the 11 BDC data products → 14 L1 views → L2 → app. Recap: zero-ETL, governed, AI-ready, one-click distribution.
 
 ## Key points to land
 - The AR and AP invoices are **real SAP BDC journal entry lines**, already in Snowflake with no ETL.

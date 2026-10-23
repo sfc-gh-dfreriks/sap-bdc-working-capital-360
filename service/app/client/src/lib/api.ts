@@ -102,3 +102,36 @@ export async function runAnalystSql(sql: string) {
   if (!res.ok) throw new Error(`API error: ${res.status}`);
   return res.json();
 }
+
+// ── Ask Cortex ──────────────────────────────────────────────────────────────
+// Live: POST starts a background job, then poll until done.
+// Static: answers for each topic's default question are baked at export time.
+export interface AskCortexRequest { topic: string; args?: Record<string, string>; question?: string; }
+
+export function askKey(r: AskCortexRequest): string {
+  const a = Object.entries(r.args ?? {}).sort().map(([k, v]) => `${k}=${v}`).join('&');
+  return a ? `${r.topic}?${a}` : r.topic;
+}
+
+export async function askCortex(r: AskCortexRequest, signal?: AbortSignal): Promise<string> {
+  if (STATIC) {
+    let baked: Record<string, string> = {};
+    try { baked = (await loadStaticFile('ask_cortex')) as Record<string, string>; } catch { /* not exported */ }
+    if (!r.question && baked[askKey(r)]) return baked[askKey(r)];
+    return '_Live Cortex analysis is not available in this static build. Run the app against Snowflake to ask your own question._';
+  }
+  const start = await fetch(`${BASE}/ask-cortex`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(r), signal,
+  });
+  if (!start.ok) throw new Error(`Ask Cortex: ${start.status}`);
+  const { id } = await start.json();
+  for (let i = 0; i < 90; i++) {
+    await new Promise((res) => setTimeout(res, 2000));
+    if (signal?.aborted) throw new Error('cancelled');
+    const res = await fetch(`${BASE}/ask-cortex/${id}`, { signal });
+    const j = await res.json();
+    if (j.status === 'done') return j.answer;
+    if (j.status === 'error') throw new Error(j.error);
+  }
+  throw new Error('Ask Cortex timed out');
+}

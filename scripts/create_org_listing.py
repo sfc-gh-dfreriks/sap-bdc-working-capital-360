@@ -26,6 +26,7 @@ CONTACT = os.environ.get("LISTING_CONTACT", "you@example.com")
 DESC = ("Self-contained SAP Working Capital 360 dashboard (React + Express on Snowpark "
         "Container Services) modelled on SAP BDC Working Capital Insights: DSO/DPO/DIO/CCC, "
         "cash & 13-week forecast, AR, AP, SAP Taulia-style early payment & SCF levers, inventory, "
+        "an Ask Cortex page and per-page Ask Cortex buttons (Cortex AI_COMPLETE analysis of live app data), "
         "and an Ask the Agent page powered by the SAP_WORKING_CAPITAL_360_ANALYTICS semantic view. "
         "Bundled demo data; no setup required.")
 

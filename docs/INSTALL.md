@@ -92,6 +92,10 @@ provision demo users with the `provision-360-access` pattern.
 ```sql
 GRANT DATABASE ROLE SNOWFLAKE.CORTEX_USER TO APPLICATION WORKING_CAPITAL_360_APP;
 ```
+Ask Cortex calls `AI_COMPLETE` (model `claude-sonnet-4-5`) from inside the service. It worked in the
+US, EU and APAC demo accounts with no extra grant. If a consumer account lacks Cortex or the model
+is not in its region, Ask Cortex shows "not available in this installation"; enable cross-region
+inference with `ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION'`.
 
 ## Teardown
 ```sql

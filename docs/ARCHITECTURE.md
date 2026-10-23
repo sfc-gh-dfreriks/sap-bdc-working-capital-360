@@ -45,6 +45,8 @@ no copy, and the SAP business context is preserved.
               ▼                                        ▼
    SAP_WORKING_CAPITAL_ANALYST agent        Native App "Ask the Agent"
    (Snowflake Intelligence)                 (Cortex Analyst in-app)
+                                            Native App "Ask Cortex"
+                                            (AI_COMPLETE over APP_DATA facts)
                                                         │
                                             React + Express on SPCS
 ```

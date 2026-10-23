@@ -1,12 +1,13 @@
-import { LayoutDashboard, Landmark, HandCoins, Receipt, Zap, Package, Target, Bot, Check, GitBranch } from 'lucide-react';
+import { LayoutDashboard, Landmark, HandCoins, Receipt, Zap, Package, Target, Bot, Check, GitBranch, Sparkles } from 'lucide-react';
 import { useFilters } from '@/hooks/useFilters';
 import { cn } from '@/lib/utils';
 
-export type PageId = 'overview' | 'cash' | 'ar' | 'ap' | 'early-pay' | 'inventory' | 'opportunities' | 'lineage' | 'analyst';
+export type PageId = 'ask' | 'overview' | 'cash' | 'ar' | 'ap' | 'early-pay' | 'inventory' | 'opportunities' | 'lineage' | 'analyst';
 
 export interface NavItem { id: PageId; label: string; icon: React.ElementType; }
 
 export const NAV_ITEMS: NavItem[] = [
+  { id: 'ask', label: 'Ask Cortex', icon: Sparkles },
   { id: 'overview', label: 'Working Capital Overview', icon: LayoutDashboard },
   { id: 'cash', label: 'Cash & Liquidity', icon: Landmark },
   { id: 'ar', label: 'Accounts Receivable', icon: HandCoins },
