@@ -9,7 +9,6 @@ import EarlyPayment from '@/pages/EarlyPayment';
 import Inventory from '@/pages/Inventory';
 import Opportunities from '@/pages/Opportunities';
 import Lineage from '@/pages/Lineage';
-import Analyst from '@/pages/Analyst';
 import AskCortexPage from '@/pages/AskCortexPage';
 import AskCortex from '@/components/AskCortex';
 
@@ -34,7 +33,6 @@ const PAGE_COMPONENTS: Record<string, React.FC> = {
   inventory: Inventory,
   opportunities: Opportunities,
   lineage: Lineage,
-  analyst: Analyst,
 };
 
 function AppShell() {

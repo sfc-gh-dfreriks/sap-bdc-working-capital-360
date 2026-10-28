@@ -21,8 +21,8 @@ release the cash.
   release is from extending DPO with supply chain finance.
 
 ## 10-minute flow
-1. **Open the app.** No setup is needed; the data is already inside (bundled Native App).
-2. **Working Capital Overview.** Show DSO, DPO, DIO and CCC by company, and the +4.7-day CCC increase.
+1. **Open the app.** No setup is needed; the data is already inside (bundled Native App). It opens on the Executive Dashboard.
+2. **Executive Dashboard.** Show DSO, DPO, DIO and CCC by company, and the +4.7-day CCC increase.
 3. **Accounts Payable.** DPO shortened: suppliers are being paid earlier, with discounts lost.
 4. **Early Payment & SCF.** Show dynamic discounting (10.2% effective APR) and supply chain finance funding.
 5. **Accounts Receivable.** Show aging, overdue AR (13.6% of open AR) and disputes, and the top overdue customers.
@@ -31,7 +31,7 @@ release the cash.
 8. **WC Opportunities.** Show cash release by lever and company.
 9. **Ask Cortex.** Click "Ask Cortex about Accounts Payable" (or open the Ask Cortex page) for a
    written analysis of the page's live facts, then ask a follow-up of your own.
-10. **Ask the Agent.** Ask `SAP_WORKING_CAPITAL_ANALYST` live:
+10. **Ask Cortex page.** Ask your own questions live (the `SAP_WORKING_CAPITAL_ANALYST` agent in Snowflake Intelligence answers them too):
    - "Why did CCC increase in Japan Operations in 2025?"
    - "How much discount did we lose by program?"
    - "Which customers have the most overdue AR?"

@@ -15,7 +15,7 @@ export default function AskCortexPage() {
     <div className="max-w-4xl space-y-4">
       <p className="text-sm text-gray-600">
         Ask about cash, receivables, payables, early payment, inventory or improvement levers. Cortex answers from live
-        Snowflake facts across all companies for 2024-04 to 2025-03. For SQL-level drill-downs use <b>Ask the Agent</b>.
+        Snowflake facts across all companies for 2024-04 to 2025-03.
       </p>
       <AskCortex topic="general" label="Analyse working capital" suggestions={SUGGESTIONS} autoOpen
         placeholder="Ask anything about working capital…" />

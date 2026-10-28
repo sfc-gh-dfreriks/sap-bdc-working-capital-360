@@ -43,7 +43,8 @@ SOURCES = [
 ]
 
 PAGE_PURPOSE = {
-    "Working Capital Overview": "DSO, DPO, DIO and cash conversion cycle by company and month; net working capital",
+    "Ask Cortex": "Any question, answered by Cortex from the app's live numbers",
+    "Executive Dashboard": "DSO, DPO, DIO and cash conversion cycle by company and month; net working capital",
     "Cash & Liquidity": "Bank balances by house bank and account, and the 13-week cash forecast",
     "Accounts Receivable": "Open AR, aging, overdue customers, disputes, dunning and promise-to-pay",
     "Accounts Payable": "Open AP, DPO, on-time payment, discounts captured and lost",
@@ -51,7 +52,6 @@ PAGE_PURPOSE = {
     "Inventory": "Inventory value and DIO by category against target, slow-moving stock",
     "WC Opportunities": "Cash release and P&L impact by lever and company",
     "BDC Sources & Lineage": "Which SAP BDC data products feed each layer, with row counts",
-    "Ask the Agent": "Natural-language questions over the working capital semantic view",
 }
 
 
@@ -250,34 +250,34 @@ def personas(F):
     lever = F["cash_release_by_lever"][0]
     inv = F["inventory_by_category"][0]
     return [
-        ("CFO", "Why did our cash conversion cycle grow versus last year?", "Working Capital Overview", [
-            ("Working Capital Overview", f"CCC {d(P['CCC'])} to {d(L['CCC'])} days (+{F['ccc_change_days']}). The driver is DPO, down {d(P['DPO'] - L['DPO'])} days; DSO actually improved."),
-            ("Working Capital Overview", f"Split by company: {J['COMPANY']} has the highest DIO ({d(J['DIO'])}) and CCC ({d(J['CCC'])})."),
+        ("CFO", "Why did our cash conversion cycle grow versus last year?", "Executive Dashboard", [
+            ("Executive Dashboard", f"CCC {d(P['CCC'])} to {d(L['CCC'])} days (+{F['ccc_change_days']}). The driver is DPO, down {d(P['DPO'] - L['DPO'])} days; DSO actually improved."),
+            ("Executive Dashboard", f"Split by company: {J['COMPANY']} has the highest DIO ({d(J['DIO'])}) and CCC ({d(J['CCC'])})."),
             ("WC Opportunities", f"{usd(F['cash_release_total_usd'])} of cash release; the largest lever is '{lever['LEVER']}' at {usd(lever['CASH_RELEASE_USD'])}."),
-            ("Ask the Agent", "Ask: 'Why did the cash conversion cycle (CCC) increase in Japan Operations in 2025?'"),
+            ("Ask Cortex", "Ask: 'Why did the cash conversion cycle (CCC) increase in Japan Operations in 2025?'"),
         ], "The cycle is explainable in three numbers, by company, from SAP data — and the levers to reverse it are ranked."),
         ("Treasurer", "How much cash will we have in 13 weeks, and where is it?", "Cash & Liquidity", [
             ("Cash & Liquidity", f"Bank balances {usd(F['bank_latest']['BALANCE_USD'])} across {F['bank_latest']['ACCOUNTS']} accounts and {F['bank_latest']['HOUSE_BANKS']} house banks (demo enrichment)."),
             ("Cash & Liquidity", f"13-week net cash {usd(F['cash_13w_net_usd'])}: receipts minus AP, payroll and opex, by company."),
             ("Early Payment & SCF", f"SCF funded {usd(ap['SCF_FUNDED_USD'])} of invoices early without using our cash; show the what-if."),
-            ("Ask the Agent", "Ask: 'What is the 13-week net cash forecast by company?'"),
+            ("Ask Cortex", "Ask: 'What is the 13-week net cash forecast by company?'"),
         ], "In production the bank balances come from real bank feeds joined in Snowflake — the forecast becomes a daily position."),
         ("AR / Credit & Collections manager", "Which customers should we call first?", "Accounts Receivable", [
             ("Accounts Receivable", f"Open AR {usd(F['ar_open']['OPEN_AR_USD'])}, {F['ar_open']['OVERDUE_PCT']}% overdue; {usd(F['ar_open']['DISPUTED_USD'])} in dispute."),
             ("Accounts Receivable", f"Top overdue: {top['CUSTOMER_NAME']} ({top['CREDIT_RISK']} risk), {usd(top['OVERDUE_USD'])} over {top['ITEMS']} items, up to {top['MAX_DPD']} days late."),
             ("WC Opportunities", "Show the 'Reduce DSO' lever per company: collections, disputes, AR finance."),
-            ("Ask the Agent", "Ask: 'Which customers have the most overdue AR?'"),
+            ("Ask Cortex", "Ask: 'Which customers have the most overdue AR?'"),
         ], "Add a credit-bureau score in Snowflake and the worklist ranks by risk, not just by amount."),
         ("AP / Procurement lead", "Are we paying suppliers at the right time?", "Accounts Payable", [
             ("Accounts Payable", f"Open AP {usd(F['ap_open']['OPEN_AP_USD'])}; {ap['ON_TIME_PCT']}% paid on time; {ap['EARLY_NO_BENEFIT_PCT']}% of payables paid early with no discount."),
             ("Accounts Payable", f"Discounts {usd(ap['DISC_CAPTURED_USD'])} captured, {usd(ap['DISC_LOST_USD'])} lost; in {F['latest_month']} alone {usd(lat['DISC_LOST_USD'])} was lost."),
             ("Early Payment & SCF", f"Dynamic discounting accepted at ~{F['dd_effective_apr']['APR_PCT']}% effective APR; {usd(ap['DD_OPPORTUNITY_USD'])} further opportunity."),
-            ("Ask the Agent", "Ask: 'How much discount did we lose by program?'"),
+            ("Ask Cortex", "Ask: 'How much discount did we lose by program?'"),
         ], "SAP Taulia turns the lost-discount line into captured yield or longer DPO — this shows where to start."),
         ("SE technical deep-dive", "How is this built, and could it run on our data?", "BDC Sources & Lineage", [
             ("BDC Sources & Lineage", f"{F['lineage_counts']['ACCTG']:,} journal-entry lines from the Entry View Journal Entry data product become {F['lineage_counts']['DT_AR']:,} AR and {F['lineage_counts']['DT_AP']:,} AP items."),
             ("Inventory", f"Explain enrichment honestly: inventory is modelled; {inv['INVENTORY_CATEGORY']} DIO {d(inv['DIO'])} vs target {inv['TARGET_DIO']}."),
-            ("Ask the Agent", f"Ask a question, expand the SQL: the semantic view has {F['semantic_view'].get('metric', 0)} metrics over {F['semantic_view'].get('table', 0)} tables."),
+            ("Ask Cortex", f"Ask a question live; in Snowflake Intelligence the agent shows its SQL: the semantic view has {F['semantic_view'].get('metric', 0)} metrics over {F['semantic_view'].get('table', 0)} tables."),
         ], "The deliverable is SQL, a semantic view, an agent and a Native App. Swap L0 for your BDC data products."),
     ]
 
@@ -320,23 +320,23 @@ def build_quick_start(F):
     honesty_callout(doc, F)
     h1(doc, "The ten-minute path: why did the cash conversion cycle grow?")
     table(doc, ["#", "Page", "Do and say", "Time"], [
-        ["1", "Working Capital Overview", f"{ccc_story(F)}", "2 min"],
-        ["2", "Working Capital Overview", f"By company: {J['COMPANY']} has the highest DIO ({d(J['DIO'])}).", "1 min"],
+        ["1", "Executive Dashboard", f"{ccc_story(F)}", "2 min"],
+        ["2", "Executive Dashboard", f"By company: {J['COMPANY']} has the highest DIO ({d(J['DIO'])}).", "1 min"],
         ["3", "Accounts Receivable", f"{F['ar_open']['OVERDUE_PCT']}% of open AR overdue; top customer {F['top_overdue_customers'][0]['CUSTOMER_NAME']}.", "1 min"],
         ["4", "Accounts Payable", f"{usd(ap['DISC_LOST_USD'])} of discounts lost against {usd(ap['DISC_CAPTURED_USD'])} captured.", "1 min"],
         ["5", "Early Payment & SCF", f"SCF funded {usd(ap['SCF_FUNDED_USD'])}; run the what-if. Name SAP Taulia.", "2 min"],
         ["6", "WC Opportunities", f"{usd(F['cash_release_total_usd'])} of cash release by lever.", "1 min"],
-        ["7", "Ask the Agent", "Ask the Japan CCC question, then expand the SQL.", "1 min"],
+        ["7", "Ask Cortex", "Ask the Japan CCC question live (the agent in Snowflake Intelligence shows the SQL).", "1 min"],
         ["8", "BDC Sources & Lineage", "Close for a technical room: the zero-copy proof.", "1 min"],
     ], widths=[0.3, 1.6, 4.1, 0.7])
-    shot(doc, "overview", "Working Capital Overview, as captured from the running app.")
+    shot(doc, "overview", "Executive Dashboard, as captured from the running app.")
     shot(doc, "early-pay", "Early Payment & SCF — the SAP Taulia levers.")
     h2(doc, "The questions the agent ships with")
     body(doc, "Read from the app's source, so these are exactly the chips on screen.")
     for q in F["agent_questions"]:
         bullet(doc, q)
     sv = F["semantic_view"]
-    callout(doc, "What the agent knows", f"Ask the Agent reads {sv['name']}: {sv.get('table', 0)} tables "
+    callout(doc, "What the agent knows", f"The Cortex Agent (Snowflake Intelligence) reads {sv['name']}: {sv.get('table', 0)} tables "
             f"({', '.join(sv['tables_list'])}), {sv.get('dimension', 0)} dimensions, {sv.get('fact', 0)} facts and "
             f"{sv.get('metric', 0)} metrics. The agent is {F['agents'][0]}.")
     h1(doc, "What is on each page")
@@ -382,7 +382,7 @@ def build_architecture(F):
         ["L1 Silver", f"{len(F['l1_objects'])} views in SAP_BDC_L1", ", ".join(o["TABLE_NAME"] for o in F["l1_objects"])],
         ["L2 Gold", f"{len(F['analytics_objects'])} objects in ANALYTICS", ", ".join(o["TABLE_NAME"] for o in F["analytics_objects"])],
         ["Semantic", sv["name"].split(".", 1)[1], f"{sv.get('table', 0)} tables, {sv.get('dimension', 0)} dimensions, {sv.get('fact', 0)} facts, {sv.get('metric', 0)} metrics"],
-        ["Agent", F["agents"][0], "Cortex Agent behind Ask the Agent"],
+        ["Agent", F["agents"][0], "Cortex Agent, used in Snowflake Intelligence"],
         ["App", f"{F['app_page_count']} pages", f"React + Express, packaged as Native App {F['native_app']} from {F['app_package']}"],
     ], widths=[0.9, 2.0, 3.8])
     h1(doc, "Dynamic tables")
@@ -425,7 +425,7 @@ def build_setup(F):
          f"{F['native_app']} in {F['account']}; ask for role {F['app_role']}"],
         ["Organization listing", "Install into your own account from the internal Marketplace.", f"{F['app_listing']} — state: {F['listing_state']}"],
         ["Local build", "The dev app for rehearsal and screenshots.", f"client {F['app_dev_url']}, API {F['api_url']}"],
-        ["Public static build", "A credential-free build; Ask the Agent will not answer.", F["public_url"]],
+        ["Public static build", "A credential-free build; free-text Ask Cortex questions will not answer.", F["public_url"]],
         ["Your own account", "Run the SQL and demo via Snowflake Intelligence.", "See 05_Architecture_and_Install"],
     ], widths=[1.5, 2.8, 2.4])
     h1(doc, "Getting access (provision-360-access pattern)")

@@ -80,7 +80,7 @@ CONTENT = {
          2: ["A Cortex Agent answers plain-English questions over a governed semantic view."],
          3: ["Runs on SPCS with data, semantic view and UI bundled; nothing leaves Snowflake."],
          5: ["A self-contained Snowflake Native App built on SAP BDC data"],
-         9: ["Dashboards"], 10: ["Ask the Agent"], 11: ["Runs In Snowflake"]},
+         9: ["Dashboards"], 10: ["Ask Cortex"], 11: ["Runs In Snowflake"]},
         "Tell them what they're about to see: 9 pages spelling out DSO (Days Sales Outstanding), DPO "
         "(Days Payables Outstanding), DIO (Days Inventory Outstanding) and CCC (cash conversion cycle = DSO + DIO − DPO), plus a live Cortex agent."),
     4: ({0: ["How It’s Built: BDC → Snowflake → App"],
@@ -98,12 +98,12 @@ CONTENT = {
         "Transition: 'Let me show you the app. The CFO wants to know why our cash conversion cycle "
         "grew year over year.'"),
     6: ({0: ["The Demo Flow"],
-         1: ["Open the app: no setup, the data is already inside",
-             f"Overview: cash cycle (CCC) {P['CCC']} → {L['CCC']} days",
+         1: ["Open the app: no setup, it opens on the Executive Dashboard",
+             f"Executive Dashboard: cash cycle (CCC) {P['CCC']} → {L['CCC']} days",
              f"AP and Early Payment: DPO fell {P['DPO']} → {L['DPO']} days",
              "AR and Inventory: overdue, disputes, DIO vs target",
              f"WC Opportunities: USD {CASH_M:.1f}M cash release by lever",
-             "Ask the Agent why Japan's cash cycle rose",
+             "Ask Cortex why Japan's cash cycle rose",
              "Recap: zero-ETL, governed, AI-ready"]},
         "Roadmap for the live demo; don't read it aloud. Focus most on AP and Early Payment & "
         "SCF: shorter DPO is the main reason CCC grew, and the Taulia levers fix it."),
@@ -119,14 +119,15 @@ CONTENT = {
          10: ["Overview"], 11: ["Payables"], 12: ["Early Payment"], 14: ["Opportunities"]},
         "Click through and narrate outcomes: 'CCC is up 4.7 days, and the driver is DPO: we pay "
         "suppliers earlier and still lose discounts.' Then show the SCF and dynamic discounting levers."),
-    8: ({0: ["Demo Act 2: Ask the Agent"],
+    8: ({0: ["Demo Act 2: Ask Cortex"],
          1: ["Ask in plain English: “Why did the cash conversion cycle increase in Japan in 2025?”, “How much "
              "discount did we lose by program?” or “Which customers have the most overdue AR?”"],
-         2: ["SAP_WORKING_CAPITAL_ANALYST maps the question to the bundled semantic view, generates "
+         2: ["Ask Cortex (first in the sidebar) answers from the app's live numbers. In Snowflake Intelligence, "
+             "{ag} maps the question to the bundled semantic view, generates "
              "governed SQL and returns a chart with the exact query, so the answer is explainable."],
          4: ["Cortex Agent over a governed semantic view"]},
-        "The highlight. Type a question live; do NOT pre-load it. Expand the generated SQL to show "
-        "the answer is governed and explainable."),
+        "The highlight. Type a question live into Ask Cortex; do NOT pre-load it. To show governed "
+        "SQL, ask the same question of the Cortex Agent in Snowflake Intelligence."),
     9: ({0: ["Lead with the CFO question, not architecture. AR/AP invoices are real BDC journal lines; "
              "terms, early-pay programs, inventory, bank balances and partner names are demo "
              "enrichment. USD at fixed FX (EUR 1.08, JPY 0.0067); NWC is negative as AP is ~3x AR."],
@@ -178,12 +179,12 @@ CONTENT = {
 SHOT_SLIDES = [
     ("The Dashboards: CCC, Payables & Early Payment",
      ["overview", "ap", "early-pay", "ar"],
-     "Screens for Act 1: Working Capital Overview, Accounts Payable, Early Payment & SCF, Accounts Receivable."),
+     "Screens for Act 1: Executive Dashboard, Accounts Payable, Early Payment & SCF, Accounts Receivable."),
     ("The Dashboards: Inventory, Cash & Opportunities",
      ["inventory", "cash", "opportunities", "lineage"],
      "Inventory DIO vs target, Cash & Liquidity with the 13-week forecast, WC Opportunities, and BDC Sources & Lineage."),
-    ("Ask the Agent", ["analyst"],
-     "The Ask the Agent page. Ask a live question and expand the SQL."),
+    ("Ask Cortex", ["analyst"],
+     "The Ask Cortex page (first in the sidebar). Ask a live question of your own."),
 ]
 
 

@@ -5,7 +5,7 @@ Working Capital Insights dashboard (React + Express) on Snowpark Container Servi
 
 ## What's inside
 
-- **Interactive dashboard** — Ask Cortex, Working Capital Overview (DSO / DPO / DIO /
+- **Interactive dashboard** — Ask Cortex, Executive Dashboard (opens first; DSO / DPO / DIO /
   CCC), Cash & Liquidity, Accounts Receivable, Accounts Payable, Early Payment & SCF,
   Inventory, WC Opportunities, BDC Sources & Lineage.
 - **Bundled data** — AR, AP, KPI, inventory, cash and opportunity data is packaged
@@ -13,9 +13,9 @@ Working Capital Insights dashboard (React + Express) on Snowpark Container Servi
 - **Ask Cortex** — the first page, plus an "Ask Cortex about <page>" button on each
   data page. The app gathers live facts from its bundled data and asks Cortex
   `AI_COMPLETE` (model `claude-sonnet-4-5`) for a short analysis.
-- **Ask the Agent** — Cortex Analyst over the bundled **`SAP_WORKING_CAPITAL_360_ANALYTICS`**
-  semantic view — the same model behind the account-level **`SAP_WORKING_CAPITAL_ANALYST`**
-  Cortex Agent.
+- **Semantic view** — the bundled **`SAP_WORKING_CAPITAL_360_ANALYTICS`** semantic view is the
+  same model behind the account-level **`SAP_WORKING_CAPITAL_ANALYST`** Cortex Agent (use it in
+  Snowflake Intelligence; there is no separate agent page in the app).
 
 ## Install
 
@@ -27,7 +27,7 @@ Working Capital Insights dashboard (React + Express) on Snowpark Container Servi
 
 ## Cortex access
 
-Ask the Agent (Cortex Analyst) and Ask Cortex (`AI_COMPLETE`) need Cortex AI in this
+Ask Cortex (`AI_COMPLETE`) needs Cortex AI in this
 account. If Cortex is not usable, grant the app `SNOWFLAKE.CORTEX_USER`; if the model is not
 in this region, an ACCOUNTADMIN can enable cross-region inference
 (`ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION'`). Without Cortex, Ask Cortex
@@ -48,7 +48,7 @@ payment and supply chain finance, inventory against target, and a cash release p
 
 ## Cortex access
 
-Ask the Agent (Cortex Analyst) and Ask Cortex (`AI_COMPLETE`) need Cortex AI in this
+Ask Cortex (`AI_COMPLETE`) needs Cortex AI in this
 account. If Cortex is not usable, grant the app `SNOWFLAKE.CORTEX_USER`; if the model is not
 in this region, an ACCOUNTADMIN can enable cross-region inference
 (`ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION'`). Without Cortex, Ask Cortex

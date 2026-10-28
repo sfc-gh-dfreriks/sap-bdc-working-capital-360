@@ -13,11 +13,11 @@ from playwright.sync_api import sync_playwright
 
 OUT = pathlib.Path("/tmp/wc_shots_kit")
 PAGES = [
-    ("overview", "Working Capital Overview"), ("cash", "Cash & Liquidity"),
+    ("overview", "Executive Dashboard"), ("cash", "Cash & Liquidity"),
     ("ar", "Accounts Receivable"), ("ap", "Accounts Payable"),
     ("early-pay", "Early Payment & SCF"), ("inventory", "Inventory"),
     ("opportunities", "WC Opportunities"), ("lineage", "BDC Sources & Lineage"),
-    ("analyst", "Ask the Agent"),
+    ("analyst", "Ask Cortex"),  # id kept: decks and demo guide look up shots["analyst"]
 ]
 
 

@@ -11,20 +11,20 @@
 
 | # | Use case | Persona | App page |
 |---|---|---|---|
-| 1 | Cash conversion cycle | CFO | Working Capital Overview |
+| 1 | Cash conversion cycle | CFO | Executive Dashboard |
 | 2 | Collections and disputes | Credit & collections manager | Accounts Receivable |
 | 3 | Payables discipline | AP manager | Accounts Payable |
 | 4 | Early payment and supply chain finance | Treasurer / procurement | Early Payment & SCF |
 | 5 | Inventory optimization | Supply chain / controller | Inventory |
 | 6 | Liquidity and 13-week cash | Treasurer | Cash & Liquidity |
 | 7 | Cash release plan | CFO / finance transformation | WC Opportunities |
-| 8 | Working capital copilot | Any finance user | Ask Cortex (page analysis) and Ask the Agent (Cortex Agent) |
+| 8 | Working capital copilot | Any finance user | Ask Cortex (page analysis and free questions); Cortex Agent in Snowflake Intelligence |
 
 ## 1. Cash conversion cycle
 
 - **Persona:** CFO
 - **Business question:** Why did our CCC (Cash Conversion Cycle = DSO + DIO − DPO) grow year over year, and in which company?
-- **Where in the app:** Working Capital Overview
+- **Where in the app:** Executive Dashboard
 - **Data used:** DSO, DPO, DIO, CCC, NET_WORKING_CAPITAL_USD, COMPANY, MONTH
 - **Ask the agent:**
   - "Why did CCC increase in Japan Operations in 2025?"
@@ -95,7 +95,7 @@
 
 - **Persona:** Any finance user
 - **Business question:** Ask working capital questions in plain English.
-- **Where in the app:** Ask the Agent (Cortex Agent)
+- **Where in the app:** Ask Cortex page (the `SAP_WORKING_CAPITAL_ANALYST` Cortex Agent answers the same questions in Snowflake Intelligence)
 - **Data used:** Semantic view SAP_WORKING_CAPITAL_360_ANALYTICS
 - **Ask the agent:**
   - "What is DSO, DPO and DIO by company for the latest month?"

@@ -116,7 +116,7 @@ def o04_pattern(prs, f):
          f"{lc['DT_AR']:,} AR and {lc['DT_AP']:,} AP items, monthly KPIs, 13-week forecast", SF_BLUE),
         ("SEM", "SAP Working Capital 360 Analytics semantic view",
          f"{sv.get('table', 0)} tables · {sv.get('dimension', 0)} dimensions · {sv.get('metric', 0)} metrics", VIOLET),
-        ("AI", "SAP Working Capital Analyst agent", "Cortex Agent behind Ask the Agent", VIOLET),
+        ("AI", "SAP Working Capital Analyst agent", "Cortex Agent in Snowflake Intelligence", VIOLET),
         ("APP", f"Native App · {f['app_page_count']} pages", "React + Express on SPCS, data bundled", DK2),
     ]
     y = TOP
@@ -136,7 +136,7 @@ def o05_app(prs, f, shots):
     pages = f["app_pages"]
     caption(s, LEFT + 6.1, TOP, 3.0, "every page")
     stack(s, LEFT + 6.1, TOP + 0.30, 3.0, 3.2, [(f"· {p}", 10, False, DK1, 5) for p in pages])
-    note(s, "Company and period filters apply across every page. Shown: Working Capital Overview.")
+    note(s, "Company and period filters apply across every page. Shown: Executive Dashboard.")
     return s
 
 
@@ -237,7 +237,7 @@ def demo(f, shots):
     lc = f["lineage_counts"]
     prs = new_presentation()
     slides = [cover(prs, f, "App walkthrough")]
-    slides.append(shot_slide(prs, shots, "overview", "Working Capital Overview", "DSO, DPO, DIO and the cash conversion cycle", [
+    slides.append(shot_slide(prs, shots, "overview", "Executive Dashboard", "DSO, DPO, DIO and the cash conversion cycle", [
         ("shown", f"Cash conversion cycle (CCC) {d(L['CCC'])} days in {f['latest_month']}, +{f['ccc_change_days']} vs {f['prior_month']}.", SF_BLUE, 1.05),
         ("say", f"DPO fell {d(P['DPO'] - L['DPO'])} days; DSO improved. {J['COMPANY']} has the highest DIO.", TEAL, 1.2),
         ("honesty", "NWC is negative: AP is about 3x AR in the demo tenant.", RED, 0.95)],
@@ -276,7 +276,7 @@ def demo(f, shots):
         ("path", "BDC data product → L1 view → dynamic table → semantic view → app.", VIOLET, 1.2),
         ("rows", f"{lc['ACCTG']:,} journal lines become {lc['DT_AR']:,} AR and {lc['DT_AP']:,} AP items.", TEAL, 1.2)],
         "Close here for a technical audience."))
-    slides.append(shot_slide(prs, shots, "analyst", "Ask the Agent", "Plain-English questions, governed SQL", [
+    slides.append(shot_slide(prs, shots, "analyst", "Ask Cortex", "Plain-English questions, answered from live numbers", [
         ("try", f"'{f['agent_questions'][0]}'", SF_BLUE, 1.0),
         ("then", "Expand the generated SQL.", DK2, 0.8),
         ("scope", f"{f['semantic_view'].get('metric', 0)} metrics in one semantic view.", VIOLET, 0.9)],
