@@ -16,7 +16,13 @@ from pptx import Presentation
 from pptx.util import Emu
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-TEMPLATE = ROOT.parent / "sap-bdc-spend-360/docs/SAP_Spend_360_Demo_Guide.pptx"
+# The shape indexes below match the untouched 15-slide Spend template (its first
+# commit), not the generated 18-slide Spend guide, so read it from git history.
+_SPEND = ROOT.parent / "sap-bdc-spend-360"
+TEMPLATE = pathlib.Path("/tmp/spend_demo_guide_template.pptx")
+TEMPLATE.write_bytes(__import__("subprocess").run(
+    ["git", "-C", str(_SPEND), "show", "ead818c:docs/SAP_Spend_360_Demo_Guide.pptx"],
+    check=True, capture_output=True).stdout)
 OUT = ROOT / "docs/SAP_Working_Capital_360_Demo_Guide.pptx"
 SHOTS = pathlib.Path("/tmp/wc_shots_kit")
 A = "http://schemas.openxmlformats.org/drawingml/2006/main"

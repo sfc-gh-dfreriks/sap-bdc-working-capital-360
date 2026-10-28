@@ -30,7 +30,7 @@ def main():
     with sync_playwright() as p:
         b = p.chromium.launch()
         pg = b.new_page(viewport={"width": 1600, "height": 1000})
-        pg.goto(a.url, wait_until="networkidle")
+        pg.goto(a.url, wait_until="networkidle", timeout=90000)
         pg.wait_for_timeout(4500)
         for sid, label in PAGES:
             pg.locator("button", has_text=label).first.click()

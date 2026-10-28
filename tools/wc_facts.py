@@ -43,7 +43,7 @@ LATEST, PRIOR = "2025-03", "2024-03"
 
 APP = pathlib.Path.home() / "Documents" / "SAP" / "SAP Skills" / "working_capital_360_react"
 SIDEBAR = APP / "client" / "src" / "components" / "Sidebar.tsx"
-ANALYST_PAGE = APP / "client" / "src" / "pages" / "Analyst.tsx"
+ANALYST_PAGE = APP / "client" / "src" / "pages" / "AskCortexPage.tsx"
 APP_DEV_URL = "http://localhost:5185"
 API_URL = "http://localhost:3010"
 
